@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const WidgetApp());
+}
+
+class WidgetApp extends StatelessWidget {
+  const WidgetApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Common Widgets in Flutter'),
+          backgroundColor: Colors.blueGrey, // Changed color
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+              'https://via.placeholder.com/200', // Sample Image
+              height: 150,
+              width: 150,
+            ),
+            const SizedBox(height: 20), // Space
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.star, color: Colors.orange, size: 40), // Changed color
+                const SizedBox(width: 10),
+                const Text(
+                  'Flutter Widgets',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 40), // Space
+            ElevatedButton(
+              onPressed: () {
+                // Action when button is pressed
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Button Clicked!")),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green, // Changed button color
+              ),
+              child: const Text('Click Me'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
